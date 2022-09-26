@@ -59,7 +59,7 @@ const Nav = ({ setQuery, weather: { temp, details, dt, timezone, name, country, 
                     <button className="bg-dark-gray text-white px-4 py-2 text-sm" onClick={toggleSearch}>Search for places</button>
                     <button className="bg-dark-gray text-white rounded-full p-2 text-xl" onClick={handleLocationClick}><BiCurrentLocation /></button>
                 </div>
-                <img src={iconURLFromCode(icon)} className="w-52" />
+                <img src={iconURLFromCode(icon)} className="w-52" alt="weather pic" />
                 <p className="text-white text-8xl font-bold">{temp.toFixed()}<span className="text-dark-gray text-4xl align-top">°</span></p>
                 <p className="text-3xl font-medium text-light-gray">{details}</p>
                 <p className="text-xl font-light text-white">{description}</p>
