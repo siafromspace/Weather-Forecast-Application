@@ -31,7 +31,7 @@ function App() {
 
     }
     fetchWeatherData()
-  }, [query, units])
+  }, [query, units, error])
 
   return (
     <div className="w-full h-screen mx-auto grid grid-cols-12">
