@@ -51,6 +51,7 @@ function App() {
       <ToastContainer
         position='top-center'
         transition={Zoom}
+        newestOnTop={true}
       />
     </div>
   );

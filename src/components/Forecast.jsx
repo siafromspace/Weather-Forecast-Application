@@ -22,7 +22,7 @@ const Forecast = ({ weather, units, setUnits }) => {
             metric: !isActive.current.metric,
             imperial: !isActive.current.imperial
         }
-    }, [units, isActive])
+    }, [units])
 
     const styles = {
         color: "#100E1D",
