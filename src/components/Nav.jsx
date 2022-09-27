@@ -2,6 +2,7 @@ import { useState } from "react"
 import { BiCurrentLocation } from "react-icons/bi"
 import { MdLocationPin, MdClose } from "react-icons/md"
 import { formatToLocalTime, iconURLFromCode } from "../services/weatherServices"
+import { toast } from "react-toastify"
 
 const Nav = ({ setQuery, weather: { temp, details, dt, timezone, name, country, description, icon } }) => {
     const [searchBar, setSearchBar] = useState(false)
@@ -46,6 +47,7 @@ const Nav = ({ setQuery, weather: { temp, details, dt, timezone, name, country, 
     const handleLocationClick = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
+                toast.success("Location fetched!")
                 let lat = position.coords.latitude
                 let lon = position.coords.longitude
                 setQuery({ lat, lon })
