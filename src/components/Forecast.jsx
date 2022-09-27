@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useState } from "react";
+import { useRef } from "react";
 import { iconURLFromCode } from "../services/weatherServices";
 
 const Forecast = ({ weather, units, setUnits }) => {
 
-    const [isActive, setIsActive] = useState({
-        metric: false,
-        imperial: true
+    const isActive = useRef({
+        metric: true,
+        imperial: false
     })
 
 
@@ -18,11 +18,12 @@ const Forecast = ({ weather, units, setUnits }) => {
     }
 
     useEffect(() => {
-        setIsActive({
-            metric: !isActive.metric,
-            imperial: !isActive.imperial
-        })
-    }, [units])
+        isActive.current = {
+            metric: !isActive.current.metric,
+            imperial: !isActive.current.imperial
+        }
+        console.log(isActive)
+    }, [units, isActive])
 
     const styles = {
         color: "#100E1D",
@@ -32,8 +33,8 @@ const Forecast = ({ weather, units, setUnits }) => {
     return (
         <div className="w-full space-y-12">
             <div className="flex justify-end w-full flex-grow space-x-2">
-                <button style={isActive.metric ? styles : {}} onClick={handleUnitChange} name="metric" className="bg-dark-gray text-white rounded-full px-2 py-1 text-lg font-medium transition hover:scale-110 ease-linear">°C</button>
-                <button style={isActive.imperial ? styles : {}} onClick={handleUnitChange} name="imperial" className="bg-dark-gray text-white rounded-full px-2 py-1 text-lg font-medium transition hover:scale-110 ease-linear">°F</button>
+                <button style={isActive.current.metric ? styles : {}} onClick={handleUnitChange} name="metric" className="bg-dark-gray text-white rounded-full px-2 py-1 text-lg font-medium transition hover:scale-110 ease-linear">°C</button>
+                <button style={isActive.current.imperial ? styles : {}} onClick={handleUnitChange} name="imperial" className="bg-dark-gray text-white rounded-full px-2 py-1 text-lg font-medium transition hover:scale-110 ease-linear">°F</button>
             </div>
             <div className="flex justify-evenly flex-wrap gap-2">
                 {weather.daily.map((day, i) => {
