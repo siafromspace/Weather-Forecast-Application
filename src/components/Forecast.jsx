@@ -19,8 +19,8 @@ const Forecast = ({ weather, units, setUnits }) => {
 
     useEffect(() => {
         isActive.current = {
-            metric: !isActive.current.metric,
-            imperial: !isActive.current.imperial
+            metric: units === "metric" ? true : false,
+            imperial: units === "imperial" ? true : false
         }
     }, [units])
 
