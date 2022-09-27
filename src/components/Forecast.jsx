@@ -22,7 +22,6 @@ const Forecast = ({ weather, units, setUnits }) => {
             metric: !isActive.current.metric,
             imperial: !isActive.current.imperial
         }
-        console.log(isActive)
     }, [units, isActive])
 
     const styles = {
